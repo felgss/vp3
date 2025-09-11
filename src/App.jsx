@@ -98,7 +98,7 @@ function App() {
                 Seguro que se paga sozinho
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Proteja Seu Lar com Tranquilidade Total
+                Proteção Total do Seu Lar com + de 30 assistências
               </h1>
               <p className="text-xl mb-8 text-blue-100">
                 Seguro residencial completo com assistências 24h que economizam mais do que você paga. 
