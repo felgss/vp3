@@ -361,7 +361,6 @@ function App() {
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
               className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-4"
               onClick={() => window.open('https://wa.me/5532999023260?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
             >
