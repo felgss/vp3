@@ -203,9 +203,7 @@ function App() {
                 ))}
               </div>
 
-              <Button size="lg" className="mt-8 bg-blue-600 hover:bg-blue-700 text-white">
-                Ver Todas as Coberturas
-              </Button>
+
             </div>
             
             <div className="relative">
