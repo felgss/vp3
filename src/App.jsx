@@ -113,9 +113,7 @@ function App() {
                   <Phone className="w-5 h-5 mr-2" />
                   Cotação Gratuita
                 </Button>
-                <Button size="lg" className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-4">
-                  Saiba Mais
-                </Button>
+
               </div>
             </div>
             <div className="relative">
