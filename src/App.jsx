@@ -379,7 +379,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <img src={seg3LogoSemFundo} alt="SEG3 Logo" className="h-16 w-auto" />
+                <img src={seg3LogoSemFundo} alt="SEG3 Logo" className="h-20 w-auto" />
               </div>
               <p className="text-gray-400">
                 Protegendo lares brasileiros com segurança e economia.
