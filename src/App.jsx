@@ -10,6 +10,7 @@ import heroImage from './assets/BdtbSs0loZ5L.png'
 import assistanceImage from './assets/b6RqGaGpMx5c.jpg'
 import protectionImage from './assets/t9sHXK0mjxBa.jpg'
 import seg3Logo from './assets/seg3-new-logo.png'
+import seg3LogoSemFundo from './assets/Logo_SEG3_sem_fundo.png'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -378,7 +379,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <img src={seg3Logo} alt="SEG3 Logo" className="h-16 w-auto" />
+                <img src={seg3LogoSemFundo} alt="SEG3 Logo" className="h-16 w-auto" />
               </div>
               <p className="text-gray-400">
                 Protegendo lares brasileiros com segurança e economia.
