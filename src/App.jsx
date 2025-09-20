@@ -80,9 +80,9 @@ function App() {
               <a href="#economia" className="text-gray-700 hover:text-blue-600 transition-colors">Economia</a>
             </nav>
 
-            <Button 
+<Button 
               className="bg-blue-600 hover:bg-blue-700 text-white"
-              onClick={() => window.open('https://wa.me/5532999023260?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
+              onClick={() => window.open('https://wa.me/5532999246064?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
             >
               Cotação Grátis
             </Button>
@@ -109,7 +109,7 @@ function App() {
                 <Button 
                   size="lg" 
                   className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4"
-                  onClick={() => window.open('https://wa.me/5532999023260?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
+                  onClick={() => window.open('https://wa.me/5532999246064?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   Cotação Gratuita
@@ -272,7 +272,7 @@ function App() {
             <Button 
               size="lg" 
               className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4"
-              onClick={() => window.open('https://wa.me/5532999023260?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
+              onClick={() => window.open('https://wa.me/5532999246064?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
             >
               <Phone className="w-5 h-5 mr-2" />
               Quero Minha Cotação Agora
@@ -353,15 +353,15 @@ function App() {
             <Button 
               size="lg" 
               className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4"
-              onClick={() => window.open('https://wa.me/5532999023260?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
+              onClick={() => window.open('https://wa.me/5532999246064?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
             >
               <Phone className="w-5 h-5 mr-2" />
-              (32) 99902-3260
+              (32) 99924-6064
             </Button>
             <Button 
               size="lg" 
               className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-4"
-              onClick={() => window.open('https://wa.me/5532999023260?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
+              onClick={() => window.open('https://wa.me/5532999246064?text=Olá! Gostaria de fazer uma cotação do seguro residencial.', '_blank')}
             >
               Cotação Online
             </Button>
