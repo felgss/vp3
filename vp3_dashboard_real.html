@@ -1,0 +1,264 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.dash{padding:1rem 0;}
+.header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.5rem;}
+.header h1{font-size:18px;font-weight:500;color:var(--color-text-primary);}
+.header span{font-size:12px;color:var(--color-text-secondary);}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:1.5rem;}
+.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;}
+.kpi-lbl{font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;}
+.kpi-val{font-size:20px;font-weight:500;color:var(--color-text-primary);}
+.kpi-delta{font-size:12px;margin-top:4px;}
+.up{color:var(--color-text-success);}
+.down{color:var(--color-text-danger);}
+.neutral{color:var(--color-text-secondary);}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:1.5rem;}
+.row3{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:16px;margin-bottom:1.5rem;}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;}
+.card-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:1rem;}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;}
+.tbl th{color:var(--color-text-secondary);font-weight:400;padding:4px 0;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);}
+.tbl td{padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.tbl td.r{text-align:right;}
+.badge{font-size:10px;padding:2px 7px;border-radius:var(--border-radius-md);}
+.ba{background:var(--color-background-success);color:var(--color-text-success);}
+.bb{background:var(--color-background-info);color:var(--color-text-info);}
+.bc{background:var(--color-background-secondary);color:var(--color-text-secondary);}
+.bar-wrap{height:5px;background:var(--color-background-secondary);border-radius:3px;margin-top:3px;}
+.bar-fill{height:100%;border-radius:3px;}
+.leg{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px;font-size:12px;color:var(--color-text-secondary);}
+.leg span{display:flex;align-items:center;gap:5px;}
+.ldot{width:10px;height:10px;border-radius:2px;}
+.desp-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px;}
+.desp-item:last-child{border-bottom:none;}
+.desp-lbl{flex:1;color:var(--color-text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.desp-val{color:var(--color-text-secondary);min-width:70px;text-align:right;}
+.estoque-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px;}
+.estoque-row:last-child{border-bottom:none;}
+</style>
+
+<div class="dash">
+  <div class="header">
+    <h1>VP3 Distribuidora — Dashboard 2026</h1>
+    <span>Jan–Mar 2026 · Dados Olist ERP</span>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-lbl">Receita bruta — Março</div>
+      <div class="kpi-val">R$ 229K</div>
+      <div class="kpi-delta up">+82,2% vs fev (R$ 126K)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Resultado líquido — Março</div>
+      <div class="kpi-val">R$ 33,6K</div>
+      <div class="kpi-delta up">Recuperação vs fev (-R$ 1,8K)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Ticket médio — Março</div>
+      <div class="kpi-val">R$ 447</div>
+      <div class="kpi-delta up">+9,3% vs fev (R$ 409)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Margem bruta — Março</div>
+      <div class="kpi-val">31,9%</div>
+      <div class="kpi-delta up">vs 29,5% em fev</div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <div class="card">
+      <div class="card-title">DRE — evolução Jan–Mar 2026</div>
+      <div class="leg">
+        <span><span class="ldot" style="background:#3266ad;"></span>Receita bruta</span>
+        <span><span class="ldot" style="background:#2a8a5e;"></span>Lucro bruto</span>
+        <span><span class="ldot" style="background:#c0392b;"></span>Resultado líquido</span>
+      </div>
+      <div style="position:relative;width:100%;height:210px;"><canvas id="chartDRE"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Pedidos por mês</div>
+      <div class="leg">
+        <span><span class="ldot" style="background:#7f77dd;"></span>Qtd pedidos</span>
+        <span><span class="ldot" style="background:#ef9f27;"></span>Ticket médio</span>
+      </div>
+      <div style="position:relative;width:100%;height:210px;"><canvas id="chartPedidos"></canvas></div>
+    </div>
+  </div>
+
+  <div class="row3">
+    <div class="card">
+      <div class="card-title">Top 10 clientes — Março (por faturamento)</div>
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:42%">Cliente</th>
+          <th style="width:20%">Faturado</th>
+          <th style="width:20%">Lucro</th>
+          <th style="width:18%">Margem</th>
+        </tr></thead>
+        <tbody id="clientesTbl"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">Despesas por grupo — Março</div>
+      <div id="despesasList"></div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <div class="card">
+      <div class="card-title">Top 10 produtos — Curva ABC (por receita)</div>
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:52%">Produto</th>
+          <th style="width:12%">Qtd</th>
+          <th style="width:20%">Valor</th>
+          <th style="width:16%">Classe</th>
+        </tr></thead>
+        <tbody id="prodsTbl"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">Giro de estoque — classificação</div>
+      <div class="leg" id="giroLeg"></div>
+      <div style="position:relative;width:100%;height:200px;"><canvas id="chartGiro"></canvas></div>
+      <div style="margin-top:1rem;">
+        <div class="estoque-row"><span>Produtos em giro normal</span><span style="font-weight:500;color:var(--color-text-success);">532</span></div>
+        <div class="estoque-row"><span>Baixo giro</span><span style="font-weight:500;color:var(--color-text-warning);">270</span></div>
+        <div class="estoque-row"><span>Encalhe (giro = 0)</span><span style="font-weight:500;color:var(--color-text-danger);">620</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const fmtR = v => 'R$ ' + Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtK = v => v >= 1000 ? 'R$' + (v/1000).toFixed(1) + 'K' : 'R$' + Math.round(v);
+
+new Chart(document.getElementById('chartDRE'), {
+  type: 'bar',
+  data: {
+    labels: ['Janeiro','Fevereiro','Março'],
+    datasets: [
+      {label:'Receita bruta', data:[162858.8,125677.99,228992.8], backgroundColor:'#3266ad', borderRadius:3, barPercentage:0.6},
+      {label:'Lucro bruto', data:[46217.32,33005.36,70915.64], backgroundColor:'#2a8a5e', borderRadius:3, barPercentage:0.6},
+      {label:'Resultado líquido', data:[5826.56,-1781.07,33601.19], backgroundColor:'#c0392b', borderRadius:3, barPercentage:0.6},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmtK(ctx.raw)}}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:11}}},
+      y:{ticks:{font:{size:10},callback:v=>(v<0?'-':'')+'R$'+Math.abs(v/1000).toFixed(0)+'K'},grid:{color:'rgba(128,128,128,0.1)'}}
+    }
+  }
+});
+
+new Chart(document.getElementById('chartPedidos'), {
+  type:'bar',
+  data:{
+    labels:['Janeiro','Fevereiro','Março'],
+    datasets:[
+      {label:'Pedidos',data:[392,307,512],backgroundColor:'#7f77dd',borderRadius:3,barPercentage:0.5,yAxisID:'y'},
+      {label:'Ticket médio',data:[415.46,409.37,447.25],type:'line',borderColor:'#ef9f27',backgroundColor:'transparent',pointBackgroundColor:'#ef9f27',pointRadius:4,borderWidth:2,yAxisID:'y2'},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:11}}},
+      y:{position:'left',ticks:{font:{size:10}},grid:{color:'rgba(128,128,128,0.1)'},title:{display:true,text:'Pedidos',font:{size:10}}},
+      y2:{position:'right',ticks:{font:{size:10},callback:v=>'R$'+v},grid:{display:false},title:{display:true,text:'Ticket',font:{size:10}}}
+    }
+  }
+});
+
+const clientes = [
+  ['APEC VEICULOS S/A',19668.5,4736.37,'34,5%'],
+  ['VFPARTS ACESSORIOS AUTO',17047.46,3913.22,'29,8%'],
+  ['Fascinasom Av Brasil',11269.71,2824.35,'33,4%'],
+  ['FP ACESSORIOS AUTOMOTIVOS',10478.19,2442.31,'30,4%'],
+  ['KURUMÁ VEÍCULOS LTDA',8968.3,2665.69,'42,3%'],
+  ['SOFISTICAR ACESSORIOS',7517.64,2589.13,'52,5%'],
+  ['KURUMA VEICULOS LTDA',7297.1,3179.92,'77,2%'],
+  ['CDA E AUTOMANIA LTDA',5775.9,1820.86,'46,0%'],
+  ['CAPOTARIA DO BRUNO',4557.6,1324.2,'41,0%'],
+  ['CITY.I SISTEMAS ELET.',4510.23,1630.17,'56,6%'],
+];
+const maxVal = clientes[0][1];
+const tbl = document.getElementById('clientesTbl');
+clientes.forEach(c => {
+  const pct = (c[1]/maxVal*100).toFixed(0);
+  tbl.innerHTML += `<tr>
+    <td title="${c[0]}"><div>${c[0]}</div><div class="bar-wrap"><div class="bar-fill" style="width:${pct}%;background:#3266ad;"></div></div></td>
+    <td class="r">${fmtK(c[1])}</td>
+    <td class="r">${fmtK(c[2])}</td>
+    <td class="r" style="color:${parseFloat(c[3])>50?'var(--color-text-success)':'var(--color-text-primary)'}">${c[3]}</td>
+  </tr>`;
+});
+
+const despesas = [
+  ['Compra de mercadoria',112992.30,'#3266ad'],
+  ['Desp. administrativas',16384.01,'#7f77dd'],
+  ['Desp. comerciais',10571.98,'#ef9f27'],
+  ['Pró-labore/retiradas',10000.00,'#888780'],
+  ['Desp. colaboradores',8318.53,'#5dcaa5'],
+  ['Distrib. de lucros',4180.00,'#2a8a5e'],
+  ['Impostos e taxas',955.05,'#c0392b'],
+  ['Prestação de serviços',124.65,'#d85a30'],
+];
+const maxD = despesas[0][1];
+const dl = document.getElementById('despesasList');
+despesas.forEach(d => {
+  const pct = (d[1]/maxD*100).toFixed(0);
+  dl.innerHTML += `<div class="desp-item">
+    <span class="desp-lbl">${d[0]}</span>
+    <div style="flex:1;margin:0 8px;"><div class="bar-wrap"><div class="bar-fill" style="width:${pct}%;background:${d[2]};"></div></div></div>
+    <span class="desp-val">${fmtK(d[1])}</span>
+  </div>`;
+});
+
+const prods = [
+  ['MODULO ENGATE CARRETINHA CONNECT5.1',103,17860.16,'A'],
+  ['KIT MULTIMIDIA ULTRON PLAY 9" STRADA',18,16138.29,'A'],
+  ['MULTIMIDIA ANDROID 7" QUAD 2G/32G',13,7793.49,'A'],
+  ['PEITO AÇO YARIS CROSS (XR/XRE)',43,6230.7,'A'],
+  ['MULTIMIDIA ANDROID ULTRON 9" QUAD',8,5363.79,'A'],
+  ['FILM G5 POLIESTER C/IRR GRAFITE 15M',22,4675.54,'A'],
+  ['FILM G35 POLIESTER C/IRR GRAFITE 15M',23,4499.87,'A'],
+  ['FILM G20 POLIESTER C/IRR GRAFITE 15M',20,3869.25,'A'],
+  ['KIT VIDRO ELÉTRICO HILUX 2P 16/',3,3599.7,'A'],
+  ['FILM G20 NANO CERAMICA GRAFITE 15M',6,3099.7,'A'],
+];
+const pt = document.getElementById('prodsTbl');
+prods.forEach(p => {
+  const cls = p[3]==='A'?'ba':p[3]==='B'?'bb':'bc';
+  pt.innerHTML += `<tr>
+    <td title="${p[0]}">${p[0]}</td>
+    <td class="r">${p[1]}</td>
+    <td class="r">${fmtK(p[2])}</td>
+    <td class="r"><span class="badge ${cls}">${p[3]}</span></td>
+  </tr>`;
+});
+
+document.getElementById('giroLeg').innerHTML = `
+  <span><span class="ldot" style="background:#2a8a5e;"></span>Giro normal 37%</span>
+  <span><span class="ldot" style="background:#ef9f27;"></span>Baixo giro 19%</span>
+  <span><span class="ldot" style="background:#c0392b;"></span>Encalhe 44%</span>`;
+
+new Chart(document.getElementById('chartGiro'), {
+  type:'doughnut',
+  data:{
+    labels:['Giro normal','Baixo giro','Encalhe'],
+    datasets:[{data:[532,270,620],backgroundColor:['#2a8a5e','#ef9f27','#c0392b'],borderWidth:0,hoverOffset:4}]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,cutout:'65%',
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ${ctx.raw} SKUs`}}}
+  }
+});
+</script>
